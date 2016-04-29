@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+   
+
+<struts>
+   <constant name="struts.devMode" value="true" />
+   <constant name="struts.multipart.maxSize" value="1000000" />
+   
+   <package name="helloworld" extends="struts-default">
+     
+      <action name="signupaction" 
+            class="edu.signup.signupaction" 
+            method="execute">
+            <result name="success">/UserProfile/index.html</result>
+            <result name="failure">/jsp/failure.jsp</result>
+      </action>
+      
+      <action name="loginaction" 
+            class="edu.signup.LoginAction" 
+            method="execute">
+            <result name="success">/UserProfile/index.html</result>
+            <result name="failure">/jsp/failure.jsp</result>
+            <result name="admin">/UserProfile/admin_index.html</result>
+      </action>
+   
+      <action name="logout"
+      		   class="edu.signup.LoginAction"
+      		   method="logout">
+            <result name="success" type="redirect">${baseURL}</result>
+      </action>
+      <action name="fileUploadAction"
+      		   class="edu.signup.FileUploadAction"
+      		   method="uploadFile">
+            <result name="success" type="redirect">/UserProfile/pages/projDetails.jsp</result> <!-- need to be changed  -->
+      </action>
+      <action name="removeFile"
+      		   class="edu.signup.FileUploadAction"
+      		   method="removefile">
+            <result name="success" type="redirect">/UserProfile/pages/tables.jsp</result> <!-- need to be changed  -->
+      </action>
+      <action name="getFileDetails"
+      		   class="edu.signup.FileUploadAction"
+      		   method="getFileDetails">
+            <result name="success" type="redirect">/UserProfile/pages/fileDetails.jsp</result> <!-- need to be changed  -->
+      </action>
+      <action name="projectCreateAction"
+      		   class="edu.signup.ProjectActions"
+      		   method="createProject">
+            <result name="success" type="redirect">/UserProfile/pages/index.jsp</result> <!-- need to be changed  -->
+      </action>
+      <action name="projectTypeCreationAction"
+      		   class="edu.signup.CreateProjectType"
+      		   method="createProjectType">
+            <result name="success" type="redirect">/UserProfile/pages/admin_profile.jsp</result> <!-- need to be changed  -->
+      </action>
+      <action name="getProjDetails"
+      		   class="edu.signup.ProjectActions"
+      		   method="getProjectDetails">
+            <result name="success" type="redirect">/UserProfile/pages/projDetails.jsp</result> <!-- need to be changed  -->
+      </action>
+       <action name="downloadIndex"
+      		   class="edu.signup.ProjectActions"
+      		   method="setDownloadFileIndex">
+            <result name="success" type="redirect"></result> <!-- need to be changed  -->
+      </action>
+      <action name="getAllProjects"
+      		   class="edu.signup.ProjectActions"
+      		   method="getAllProjects">
+            <result name="success" type="redirect">/UserProfile/pages/tables.jsp</result> <!-- need to be changed  -->
+      </action>
+      <action name="download" class="edu.signup.FileUploadAction">
+			<result name="success" type="stream">
+			  <param name="contentType">application/octet-stream</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">${downloadFile}</param>
+			  <param name="bufferSize">1024</param>
+			</result>
+   	  </action>   
+   </package>
+   
+
+</struts>
