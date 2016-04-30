@@ -307,14 +307,19 @@
                        			 <div class="panel-heading">
                             		Details of the file
                         		</div>
-		                        <!-- <div class="panel-body">
-		                        
-		                        </div> -->
+		                        <div class="panel-body">
+		                        	<p class="text-muted">FileName: <s:property value="#session.downloadFile.fileName" /></p>
+                           			<p class="text-primary">Description: <s:property value="#session.downloadFile.fileDescription" /></p>
+                           			<p class="text-success">presentStage: <s:property value="#session.downloadFile.presentStage" /> </p>
+                            		<p class="text-info">createddate: <s:property value="#session.downloadFile.createddate" /></p>
+                            		<p class="text-warning">Version: <s:property value="#session.downloadFile.versionNumber" /></p>
+                            		<p class="text-danger">ProjectName: <s:property value="#session.downloadFile.projectClass.name" /></p>
+		                        </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
                 </div>
-                        <p class="fa fa-download" ><h2>Download file - <s:a href="%{fileDownload}"><s:property value="#session.downloadFile" /></s:a></h2> </p>
+                        <p class="fa fa-download" ><h2>Download file - <s:a href="%{fileDownload}"><s:property value="#session.downloadFile.fileName" /></s:a></h2> </p>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>

@@ -101,7 +101,8 @@ public class FileUploadAction extends DMsession {
 		User usr = (User) sessionMap.get("user");
 		//FileClass[] f = (FileClass[]) sessionMap.get("allFiles");
 		//String filename = f[Integer.parseInt(clickedOn)].getFileName();
-		String filename = (String) sessionMap.get("downloadFile");
+		FileClass fle = (FileClass) sessionMap.get("downloadFile");
+		String filename = fle.getFileName();
 		String destPath = "E:/6th Sem/Data Modelling/DocumentRepo/"+usr.getEmail();
 
 		System.out.println("atatchement;filename=" + "'" +filename + "'");

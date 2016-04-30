@@ -68,6 +68,33 @@ function getDetails(id){
       xmlhttp.open("POST", url, true);
       xmlhttp.send();
 }
+
+
+function removeProject(id){
+	//alert(id);
+	//document.getElementById(id).value = id;
+	var xmlhttp;
+    var url="removeProject?clickedR="+id;
+    if (window.XMLHttpRequest)
+      {
+          xmlhttp=new XMLHttpRequest();
+      }
+      else
+      {
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      xmlhttp.onreadystatechange=function()
+      {
+          if (xmlhttp.readyState==4 && xmlhttp.status==200)
+          {
+             // document.getElementById("addressResultMessage").innerHTML=xmlhttp.responseText;
+        	  window.location.href = "index.jsp";
+          }
+      }
+
+      xmlhttp.open("POST", url, true);
+      xmlhttp.send();
+}
 </script>
 <body>
 
@@ -383,7 +410,7 @@ function getDetails(id){
 	                                                    <td>${loopCounter.index + 1}</td>
 	                                                    <td><c:out value="${proj.name}"/></td>
 	                                                    <td><button onclick="getDetails(${loopCounter.index})"type="button" class="btn btn-primary">Details</button></td>
-	                                                    <td><button onclick="getDetails(${loopCounter.index})" class="btn btn-primary">Remove</button></a></td>
+	                                                    <td><button onclick="removeProject(${loopCounter.index})" class="btn btn-primary">Remove</button></a></td>
 	                                                    <td>-</td>
 	                                                </tr>
                                                 </c:forEach>

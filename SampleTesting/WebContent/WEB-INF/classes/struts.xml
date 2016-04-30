@@ -65,6 +65,11 @@
       		   method="setDownloadFileIndex">
             <result name="success" type="redirect"></result> <!-- need to be changed  -->
       </action>
+      <action name="removeProject"
+      		   class="edu.signup.ProjectActions"
+      		   method="removeProject">
+            <result name="success" type="redirect"></result> <!-- need to be changed  -->
+      </action>
       <action name="getAllProjects"
       		   class="edu.signup.ProjectActions"
       		   method="getAllProjects">

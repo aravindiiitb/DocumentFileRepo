@@ -44,9 +44,29 @@
 
 </head>
 <script>
-function getDetails(id) {
-	alert(id);
-    //document.getElementById(id).value = id;
+function getClickedIndex(id){
+	//alert(id);
+	//document.getElementById(id).value = id;
+	var xmlhttp;
+	var url="getProjDetails?clickedIndex="+id;
+    if (window.XMLHttpRequest)
+      {
+          xmlhttp=new XMLHttpRequest();
+      }
+      else
+      {
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      xmlhttp.onreadystatechange=function()
+      {
+          if (xmlhttp.readyState==4 && xmlhttp.status==200)
+          {
+        	  window.location.href="blank.jsp";
+          }
+      }
+
+      xmlhttp.open("POST", url, true);
+      xmlhttp.send();
 }
 </script>
 <body>
@@ -348,7 +368,7 @@ function getDetails(id) {
                                             <td><c:out value="${projs.user.email}" /></td>
                                             <td><c:out value="${projs.name}" /></td>
                                             <td class="center">-</td>
-                                            <td class="center"><button class="btn btn-primary">Details</button></td>
+                                            <td class="center"><button onclick="getClickedIndex(${loopCounter.index})" class="btn btn-primary">Details</button></td>
                                         </tr>
                                         </c:forEach>
                                     </tbody>

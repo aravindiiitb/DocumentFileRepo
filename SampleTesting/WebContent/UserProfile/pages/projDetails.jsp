@@ -37,15 +37,6 @@
 
 </head>
 <script>
-$(document).ready(function() {
-    console.log( "window loaded" );
-    var a = $.session.get("allFiles");
-    for (i = 0; i < a.length; i++) { 
-    	alert(i);
-    	$('#'+i).attr('href','download?clickedOn='+id);
-    }
-    
-});
 function getClickedIndex(id){
 	//alert(id);
 	//document.getElementById(id).value = id;

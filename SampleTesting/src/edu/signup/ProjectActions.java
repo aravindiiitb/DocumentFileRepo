@@ -23,6 +23,15 @@ public class ProjectActions extends DMsession {
 	
 	String clickedIndex; //to retrieve proj details
 	String clickedOn;
+	private String clickedR;
+	public String getClickedR() {
+		return clickedR;
+	}
+
+	public void setClickedR(String clickedR) {
+		this.clickedR = clickedR;
+	}
+
 	public String getClickedOn() {
 		return clickedOn;
 	}
@@ -83,8 +92,21 @@ public class ProjectActions extends DMsession {
 		System.out.println("Clicked on download: " + clickedOn);
 		
 		FileClass[] f = (FileClass[]) sessionMap.get("allFiles");
-		String filename = f[Integer.parseInt(clickedOn)].getFileName();
-		sessionMap.put("downloadFile", filename);
+		FileClass dwnFle = f[Integer.parseInt(clickedOn)];
+		sessionMap.put("downloadFile", dwnFle);
+		return "success";
+	}
+	
+	public String removeProject() {
+		System.out.println("clickedR: " + clickedR);
+		CreateProjectObject obj = new CreateProjectObject();
+		ProjectClass[] allRepoProj =  (ProjectClass[]) sessionMap.get("allProj");
+		ProjectClass p = allRepoProj[Integer.parseInt(clickedR)];
+		if(obj.removeProject(p) != null) {
+			User user = (User) sessionMap.get("user");
+			ProjectClass[] allProj = obj.getAllProjects(user);
+			sessionMap.put("allProj", allProj);
+		}
 		return "success";
 	}
 	

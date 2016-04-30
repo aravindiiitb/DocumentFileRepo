@@ -138,4 +138,25 @@ public class CreateProjectObject {
 		return null;
 	}
 
+	public String removeProject(ProjectClass p) {
+		// TODO Auto-generated method stub
+		try{
+			EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
+			EmbeddedObjectContainer db = Db4oEmbedded.openFile(config,"projects.db4o");
+			ObjectSet result = db.queryByExample(p);
+			if(result != null) {
+				ProjectClass a = (ProjectClass) result.get(0);
+				db.delete(a);
+				db.close();
+			}
+			
+			return "success";
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+
 }
